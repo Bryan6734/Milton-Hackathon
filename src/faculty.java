@@ -1,6 +1,5 @@
 import java.lang.Math;
-import java.net.SocketTimeoutException;
-import java.sql.SQLOutput;
+
 
 public class faculty {
 
