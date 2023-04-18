@@ -594,7 +594,6 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         }
 
-
         g.dispose();
         bufferStrategy.show();
     }
