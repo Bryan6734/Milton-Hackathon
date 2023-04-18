@@ -87,6 +87,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         mxBradford = new faculty("Mx. Bradford", 500, true);
         mrHales = new faculty("Mr. Hales", 500, true);
         mrHussain = new faculty("Mr. Hussain", 500, true);
+        msLockwood = new faculty("Ms. Lockwood", 500, true);
 
         // TITLE SCREEN
 
@@ -96,9 +97,10 @@ public class game implements Runnable, KeyListener, MouseListener {
 
 
         idleChun = Toolkit.getDefaultToolkit().getImage("mrchun.png");
-        idleHales = Toolkit.getDefaultToolkit().getImage("idleGarchomp.gif");
-
+        idleHales = Toolkit.getDefaultToolkit().getImage("mrhales.png");
         idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
+        idleLockwood = Toolkit.getDefaultToolkit().getImage("mslockwood.png");
+        idleKilliam = Toolkit.getDefaultToolkit().getImage("mrkilliam.png");
 
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
@@ -142,7 +144,8 @@ public class game implements Runnable, KeyListener, MouseListener {
                 titleScreen();
 
                 bradfordBattle();
-                killiamBattle();
+                lockwoodBattle();
+//                killiamBattle();
 
                 halesBattle();
 
@@ -170,6 +173,9 @@ public class game implements Runnable, KeyListener, MouseListener {
     }
 
     public void bradfordBattle(){
+
+        battle_music.setVolume(0.1f);
+        battle_music.play(); // will not loop
         stageBackdrop = 1;
 
         System.out.println("╔══════════════════════════════════════════════╗");
@@ -190,8 +196,12 @@ public class game implements Runnable, KeyListener, MouseListener {
                 break;
             }
             pause(1000);
+            System.out.println("═════════════════════");
             moveBradfordEnemy();
         }
+
+        mxBradford.xpos = 2000;
+        mxBradford.ypos = 2000;
 
     }
 
@@ -213,7 +223,8 @@ public class game implements Runnable, KeyListener, MouseListener {
             }
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
-//            moveSystemUser();
+            moveSystemUser(msKilliam);
+
 
 
             if (msKilliam.health <= 0){
@@ -222,6 +233,9 @@ public class game implements Runnable, KeyListener, MouseListener {
                 break;
             }
             pause(1000);
+            System.out.println("═════════════════════");
+            moveKilliamEnemy();
+
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
@@ -254,6 +268,7 @@ public class game implements Runnable, KeyListener, MouseListener {
                 break;
             }
             pause(1000);
+            System.out.println("═════════════════════");
             moveHussainEnemy();
         }
         System.out.println("╚══════════════════════════════════════════════╝");
@@ -263,14 +278,42 @@ public class game implements Runnable, KeyListener, MouseListener {
 
     public void lockwoodBattle(){
 
+        stageBackdrop = 1;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
 
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: lockwoodBattle() Started");
+
+        for (int turn = 1; msLockwood.health>0; turn++){
+            if (msLockwood.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+            moveSystemUser(msLockwood);
+
+            if (msLockwood.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            System.out.println("═════════════════════");
+            moveLockwoodEnemy();
+        }
+
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(4000);
 
     }
 
     public void halesBattle(){
 
     }
-
 
 
     // MOVE SYSTEMS FOR USER AND ENEMY
