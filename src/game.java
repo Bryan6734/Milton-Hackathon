@@ -38,6 +38,10 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image rockfall_anim;
     public Image earthquake_anim;
     public Image tectonicbarrier_anim;
+    public Image dadhumour_anim;
+    public Image tsunami_anim;
+    public Image boulder_anim;
+    public Image highground_anim;
 
 
     // POKEMON VARIABLES
@@ -111,6 +115,11 @@ public class game implements Runnable, KeyListener, MouseListener {
         titlescreen_music = new SoundFile("01 Game Freak Logo.wav");
         intro_music = new SoundFile("02 Opening Movie.wav");
         battle_music = new SoundFile("11 Battle! (Trainer Battle).wav");
+
+        dadhumour_anim = Toolkit.getDefaultToolkit().getImage("dadhumour.gif");
+        tsunami_anim = Toolkit.getDefaultToolkit().getImage("tsunami.gif");
+        boulder_anim = Toolkit.getDefaultToolkit().getImage("boulder.gif");
+        highground_anim = Toolkit.getDefaultToolkit().getImage("highground.gif");
 
         // SETTING POSITIONS
 
@@ -333,6 +342,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             if (move.equals("1")) {
                 anim="dadhumor";
                 mrChun.dadHumor(enemy);
+                pause(2800);
             }
 
             if (move.equals("2")) {
@@ -515,10 +525,19 @@ public class game implements Runnable, KeyListener, MouseListener {
         }
 
         if (anim.equalsIgnoreCase("dadhumor")){
+            g.drawImage(dadhumour_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        }
 
-            g.setFont(new Font("Arial", Font.BOLD, 30));
-            g.setColor(Color.WHITE);
-            g.drawString("Dad Humor", 400, 350);
+        if (anim.equalsIgnoreCase("tsunami")) {
+            g.drawImage(tsunami_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("boulderbash")) {
+            g.drawImage(boulder_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        }
+
+        if (anim.equals("highground")) {
+            g.drawImage(highground_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
 
