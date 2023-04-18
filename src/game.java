@@ -70,6 +70,9 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image idleLockwood;
     public Image idleHussain;
     public Image idleBradford;
+    public Image match;
+    public Image terminal;
+    public Image kind;
 
     // IMAGE BOOLEANS
 
@@ -107,6 +110,9 @@ public class game implements Runnable, KeyListener, MouseListener {
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
+        match = Toolkit.getDefaultToolkit().getImage("match.png");
+        terminal = Toolkit.getDefaultToolkit().getImage("tornado.png");
+        kind = Toolkit.getDefaultToolkit().getImage("kind.png");
 
         // ANIMATIONS
 
@@ -435,15 +441,22 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
+            anim = "matchsticks";
             mxBradford.matchStickMadness(mrChun);
+            pause(1000);
             // Faculty move 1
+
 
         }
         if (chance>=3 && chance<8){
+            anim = "terminalTornado";
             mxBradford.terminalTornado(mrChun);
+            pause(1000);
         }
         if (chance>=8){
+            anim = "selfAppreciation";
             mxBradford.selfAppreciation(mrChun);
+            pause(1000);
         }
 
 
@@ -589,9 +602,16 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawString("Dad Humor", 400, 350);
         }
 
+        if (anim.equalsIgnoreCase("matchsticks")) {
+            g.drawImage(match, 600, 150, 200, 200, null);
+        }
 
-        if (stageBackdrop == 2){
+        if (anim.equalsIgnoreCase("terminalTornado")) {
+            g.drawImage(terminal, 600, 150, 200, 200,null);
+        }
 
+        if (anim.equalsIgnoreCase("selfAppreciation")) {
+            g.drawImage(kind,600,150,200,200,null);
         }
 
 
