@@ -1,4 +1,6 @@
 import java.lang.Math;
+import java.net.SocketTimeoutException;
+import java.sql.SQLOutput;
 
 public class faculty {
 
@@ -40,8 +42,13 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
+
+    public void takeOffBelay(faculty enemy){
+        System.out.println(name+" used TAKE OFF BELAY on "+enemy.name+"!");
+
     public void RedactleReveal(faculty enemy){
         System.out.println(name+" used REDACTLE REVEAL on "+enemy.name+"!");
+
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
@@ -49,9 +56,62 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
+
+    public void dadHumor(faculty enemy){
+        System.out.println(name+" used DAD HUMOR on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        String[] dadJokes = {
+                "Why did the rock climber bring extra chalk? In case he wanted to get a grip on things!",
+                "What's a rock climber's favorite kind of tea? High tea!",
+                "Why do rock climbers make bad comedians? Because they always bomb!",
+                "What did the rock climber say when he reached the top? Nothing, he was boulder than words!",
+                "Why do rock climbers love camping? Because they get to pitch a tent!"
+        };
+
+        int random = (int)(Math.random()*dadJokes.length);
+        System.out.println(dadJokes[random]);
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void bubbleTeaTsunami(faculty enemy){
+
+        System.out.println(name+" used BUBBLE TEA TSUNAMI on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        // minus damage
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+
+    }
+
+    public void boulderBash(faculty enemy){
+        System.out.println(name+" used BOULDER BASH on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+
+    public void IHaveTheHighGround(faculty enemy) {
+        System.out.println(name + " used I HAVE THE HIGH GROUND on " + enemy.name + "!");
+        damage = (int) (Math.random() * 100 + 50);
+
+        enemy.health = enemy.health - (int) (damage);
+        System.out.println(name + " inflicted " + damage + " damage on " + enemy.name + "!");
+        System.out.println(enemy.name + "'s health is now " + enemy.health + "!");
+    }
+
+
     public void OutdoorProgramPummel(faculty enemy){
         System.out.println(name+" used OUTDOOR PROGRAM PUMMEL on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
+
 
         enemy.health = enemy.health - (int)(damage);
         System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
