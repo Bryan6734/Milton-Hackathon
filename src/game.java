@@ -44,6 +44,7 @@ public class game implements Runnable, KeyListener, MouseListener {
     public faculty mrChun;
     public faculty msKilliam;
     public faculty mxBradford;
+    public faculty mrHussain;
 
 
     // AUDIO
@@ -78,6 +79,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         mrChun = new faculty("Mr. Chun",500,true);
         msKilliam = new faculty("Mr. Killiam",500,true);
         mxBradford = new faculty("Mx. Bradford", 500, true);
+        mrHussain = new faculty("Mr. Hussain", 500, true);
 
         // TITLE SCREEN
 
@@ -212,12 +214,48 @@ public class game implements Runnable, KeyListener, MouseListener {
                 break;
             }
             pause(1000);
-            moveSystemEnemy();
+            moveKilliamEnemy();
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
         pause(4000);
     }
+
+    public void hussainBattle(){
+        stageBackdrop = 1;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
+
+        // position user here
+
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: hussainBattle() Started");
+
+        for (int turn = 1; mrHussain.health>0; turn++){
+            if (mrHussain.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+//            moveSystemUser();
+
+
+            if (mrHussain.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            moveHussainEnemy();
+        }
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(4000);
+    }
+
+
 
 
 
@@ -289,33 +327,40 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         animation_playing = 0;
 
-
     }
-    public void moveSystemEnemy(){
+
+    public void moveKilliamEnemy(){
         System.out.println("══════════");
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
             msKilliam.RedactleReveal(mrChun);
-
-            // Faculty move 1
-
         }
         if (chance>=3 && chance<8){
             msKilliam.OutdoorProgramPummel(mrChun);
-
-            // Faculty move 2 method
-            // Set animation playing
-
         }
         if (chance>=8){
             msKilliam.RobbinsRush(mrChun);
-
-            // FAculty move 3 method
-            // Set animation playing
         }
 
-        // Reset
+        animation_playing = 0;
+
+    }
+
+    public void moveHussainEnemy(){
+        System.out.println("══════════");
+        int chance = (int) (Math.random() * 10);
+
+        if (chance<3){
+            mrHussain.harvardHammer(mrChun);
+        }
+        if (chance>=3 && chance<8){
+            mrHussain.mustangMash(mrChun);
+        }
+        if (chance>=8){
+            msKilliam.beardBanish(mrChun);
+        }
+
         animation_playing = 0;
     }
 
