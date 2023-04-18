@@ -165,13 +165,13 @@ public class game implements Runnable, KeyListener, MouseListener {
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
             moveSystemUser();
+
             if (mrHales.health <= 0){
                 System.out.println("You have WON!");
                 break;
             }
             pause(1000);
             moveSystemEnemy();
-
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
@@ -194,15 +194,29 @@ public class game implements Runnable, KeyListener, MouseListener {
         System.out.println("══════════");
         String move = input.next();
 
-        if (move.matches("(?i)1||2")) {
+        if (move.matches("(?i)1||2||3||4")) {
             if (move.equals("1")) {
                 animation_playing = 1;
+                mrChun.dadHumor(mrHales);
             }
 
             if (move.equals("2")) {
                 animation_playing = 2;
-                //chun.domove
+                mrChun.bubbleTeaTsunami(mrHales);
+
             }
+
+            if (move.equals("3")) {
+                animation_playing = 3;
+                mrChun.boulderBash(mrHales);
+            }
+
+            if (move.equals("4")) {
+                animation_playing = 4;
+                mrChun.IHaveTheHighGround(mrHales);
+            }
+
+            pause(1000);
 
             animation_playing = 0;
         } else {
@@ -306,6 +320,9 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         }
 
+        if (animation_playing == 1) {
+            System.out.println("ANIM PLAYING");
+        }
 
 
         g.dispose();

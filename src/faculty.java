@@ -92,6 +92,14 @@ public class faculty {
     }
 
 
+    public void IHaveTheHighGround(faculty enemy) {
+        System.out.println(name + " used I HAVE THE HIGH GROUND on " + enemy.name + "!");
+        damage = (int) (Math.random() * 100 + 50);
+
+        enemy.health = enemy.health - (int) (damage);
+        System.out.println(name + " inflicted " + damage + " damage on " + enemy.name + "!");
+        System.out.println(enemy.name + "'s health is now " + enemy.health + "!");
+    }
 
 
 
