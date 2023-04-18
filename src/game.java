@@ -58,11 +58,14 @@ public class game implements Runnable, KeyListener, MouseListener {
 
 
 
+
+
     // IMAGES AND GIFS
     public Image titlescreen;
 
     public Image stars;
     public Image battle1Backdrop;
+    public Image battle5Backdrop;
     public Image healthbar;
     public Image idleChun;
     public Image idleHales;
@@ -70,6 +73,12 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image idleLockwood;
     public Image idleHussain;
     public Image idleBradford;
+
+    public Image forbesRush1;
+    public Image forbesRush2;
+
+    public Image matrix;
+    public Image wrestling;
 
     // IMAGE BOOLEANS
 
@@ -94,8 +103,6 @@ public class game implements Runnable, KeyListener, MouseListener {
         // POKEMON & OBJECT IMAGES & GIFS + SOUND
 
         titlescreen = Toolkit.getDefaultToolkit().getImage("download.jpeg");
-
-
         idleChun = Toolkit.getDefaultToolkit().getImage("mrchun.png");
         idleHales = Toolkit.getDefaultToolkit().getImage("mrhales.png");
         idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
@@ -103,11 +110,16 @@ public class game implements Runnable, KeyListener, MouseListener {
         idleKilliam = Toolkit.getDefaultToolkit().getImage("mrkilliam.png");
         idleHussain = Toolkit.getDefaultToolkit().getImage("mrhussain.png");
 
+        forbesRush1 = Toolkit.getDefaultToolkit().getImage("qayson.png");
+        forbesRush2 = Toolkit.getDefaultToolkit().getImage("liam.png");
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
+        battle5Backdrop = Toolkit.getDefaultToolkit().getImage("icebackground.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
 
+        matrix = Toolkit.getDefaultToolkit().getImage("matrix.gif");
+        wrestling = Toolkit.getDefaultToolkit().getImage("wrestling.gif");
         // ANIMATIONS
 
         titlescreen_music = new SoundFile("01 Game Freak Logo.wav");
@@ -116,7 +128,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         // SETTING POSITIONS
 
-        mrChun.xpos = 200; mrChun.ypos = 450;
+        mrChun.xpos = 200; mrChun.ypos = 400;
         mrChun.width = 300; mrChun.height = 255;
 
         // put bradford right below health bar. it should be in a different place than mr chun
@@ -161,13 +173,13 @@ public class game implements Runnable, KeyListener, MouseListener {
                 titleScreen();
 
 
-                bradfordBattle();
-                mrChun.health = 500;
-                hussainBattle();
-                mrChun.health = 500;
-                lockwoodBattle();
-                mrChun.health = 500;
-                killiamBattle();
+//                bradfordBattle();
+//                mrChun.health = 500;
+//                hussainBattle();
+//                mrChun.health = 500;
+//                lockwoodBattle();
+//                mrChun.health = 500;
+//                killiamBattle();
                 mrChun.health = 500;
                 halesBattle();
 
@@ -490,14 +502,21 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance < 3){
+            anim="wrestling";
             mrHales.wrestlingWipeout(mrChun);
+            pause(4000);
         }
         if (chance >= 3 && chance < 8){
+            anim = "summonforbes";
             mrHales.summonForbesBoys(mrChun);
+            pause(4000);
         }
         if (chance >= 8){
+            anim = "matrix";
             mrHales.matrixMultiplication(mrChun);
+            pause(4000);
         }
+        anim = "";
     }
 
 
@@ -582,6 +601,19 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         }
 
+        if (stageBackdrop == 5) {
+            g.drawImage(battle5Backdrop, -5, -5, 1050, 750, null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+            g.drawImage(idleHales, mrHales.xpos, mrHales.ypos, mrHales.width, mrHales.height, null);
+
+            g.setColor(Color.green);
+            g.fillRect(660, 130, (int)(mrHales.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
+
+        }
+
         if (anim.equalsIgnoreCase("dadhumor")){
 
             g.setFont(new Font("Arial", Font.BOLD, 30));
@@ -589,11 +621,18 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawString("Dad Humor", 400, 350);
         }
 
-
-        if (stageBackdrop == 2){
-
+        if (anim.equalsIgnoreCase("summonforbes")){
+            g.drawImage(forbesRush1, 500, 300, 200, 200, null);
+            g.drawImage(forbesRush2, 700, 300, 200, 200, null);
         }
 
+        if (anim.equalsIgnoreCase("matrix")){
+            g.drawImage(matrix, 0, 0, 1000, 800, null);
+        }
+
+        if (anim.equalsIgnoreCase("wrestling")){
+            g.drawImage(wrestling, 200, 300, 700, 500, null);
+        }
 
         g.dispose();
         bufferStrategy.show();
