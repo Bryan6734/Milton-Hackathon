@@ -73,6 +73,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
     public Image stars;
     public Image battle1Backdrop;
+    public Image battle5Backdrop;
     public Image healthbar;
     public Image idleChun;
     public Image idleHales;
@@ -80,6 +81,12 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image idleLockwood;
     public Image idleHussain;
     public Image idleBradford;
+
+    public Image forbesRush1;
+    public Image forbesRush2;
+
+    public Image matrix;
+    public Image wrestling;
 
     // IMAGE BOOLEANS
 
@@ -111,13 +118,20 @@ public class game implements Runnable, KeyListener, MouseListener {
         idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
         idleLockwood = Toolkit.getDefaultToolkit().getImage("mslockwood.png");
         idleKilliam = Toolkit.getDefaultToolkit().getImage("mrkilliam.png");
+        idleHussain = Toolkit.getDefaultToolkit().getImage("mrhussain.png");
 
+        forbesRush1 = Toolkit.getDefaultToolkit().getImage("qayson.png");
+        forbesRush2 = Toolkit.getDefaultToolkit().getImage("liam.png");
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
+        battle5Backdrop = Toolkit.getDefaultToolkit().getImage("icebackground.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
 
+        matrix = Toolkit.getDefaultToolkit().getImage("matrix.gif");
+        wrestling = Toolkit.getDefaultToolkit().getImage("wrestling.gif");
         // ANIMATIONS
+
         titlescreen_music = new SoundFile("01 Game Freak Logo.wav");
         intro_music = new SoundFile("02 Opening Movie.wav");
         battle_music = new SoundFile("11 Battle! (Trainer Battle).wav");
@@ -142,6 +156,22 @@ public class game implements Runnable, KeyListener, MouseListener {
         mxBradford.xpos = 600; mxBradford.ypos = 150;
         mxBradford.width = 300; mxBradford.height = 300;
 
+        mrHales.xpos = 600; mrHales.ypos = 150;
+        mrHales.width = 300; mrHales.height = 300;
+
+        mrHussain.xpos = 600; mrHussain.ypos = 150;
+        mrHussain.width = 300; mrHussain.height = 300;
+
+        msLockwood.xpos = 600; msLockwood.ypos = 150;
+        msLockwood.width = 300; msLockwood.height = 300;
+
+        msKilliam.xpos = 600; msKilliam.ypos = 150;
+        msKilliam.width = 300; msKilliam.height = 300;
+
+
+
+
+
 //
 //
 //        msKilliam.xpos = 550; msKilliam.ypos = 160;
@@ -163,10 +193,15 @@ public class game implements Runnable, KeyListener, MouseListener {
             public void run(){
                 titleScreen();
 
-                bradfordBattle();
-                lockwoodBattle();
-//                killiamBattle();
 
+                bradfordBattle();
+                mrChun.health = 500;
+                hussainBattle();
+                mrChun.health = 500;
+                lockwoodBattle();
+                mrChun.health = 500;
+                killiamBattle();
+                mrChun.health = 500;
                 halesBattle();
 
 
@@ -221,48 +256,11 @@ public class game implements Runnable, KeyListener, MouseListener {
             moveBradfordEnemy();
         }
 
-        mxBradford.xpos = 2000;
-        mxBradford.ypos = 2000;
 
-    }
-
-    public void killiamBattle(){
-        stageBackdrop = 1;
-        battle_music.setVolume(0.1f);
-        battle_music.loop();
-
-        // position user here
-
-        System.out.println("╔══════════════════════════════════════════════╗");
-
-        System.out.println("*** CONSOLE: killiamBattle() Started");
-
-        for (int turn = 1; msKilliam.health>0; turn++){
-            if (msKilliam.health <= 0){
-                System.out.println("You have WON!");
-                break;
-            }
-            System.out.println("═════════════════════");
-            System.out.println("Turn "+turn);
-            moveSystemUser(msKilliam);
-
-            if (msKilliam.health <= 0){
-
-                System.out.println("You have WON!");
-                break;
-            }
-            pause(1000);
-            System.out.println("═════════════════════");
-            moveKilliamEnemy();
-
-        }
-        System.out.println("╚══════════════════════════════════════════════╝");
-        battle_music.stop();
-        pause(4000);
     }
 
     public void hussainBattle(){
-        stageBackdrop = 1;
+        stageBackdrop = 2;
         battle_music.setVolume(0.1f);
         battle_music.loop();
 
@@ -279,8 +277,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             }
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
-            moveSystemUser(mrChun);
-
+            moveSystemUser(mrHussain);
 
             if (mrHussain.health <= 0){
 
@@ -293,12 +290,12 @@ public class game implements Runnable, KeyListener, MouseListener {
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
-        pause(4000);
+        pause(1000);
     }
 
     public void lockwoodBattle(){
 
-        stageBackdrop = 1;
+        stageBackdrop = 3;
         battle_music.setVolume(0.1f);
         battle_music.loop();
 
@@ -331,7 +328,79 @@ public class game implements Runnable, KeyListener, MouseListener {
 
     }
 
+    public void killiamBattle(){
+        stageBackdrop = 4;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
+
+        // position user here
+
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: killiamBattle() Started");
+
+        for (int turn = 1; msKilliam.health>0; turn++){
+            if (msKilliam.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+            moveSystemUser(msKilliam);
+
+
+
+            if (msKilliam.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            System.out.println("═════════════════════");
+            moveKilliamEnemy();
+
+        }
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(4000);
+    }
+
     public void halesBattle(){
+
+        stageBackdrop = 5;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
+
+        // position user here
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: halesBattle() Started");
+
+        for (int turn = 1; mrHales.health>0; turn++){
+            if (mrHales.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+            moveSystemUser(mrHales);
+
+            if (mrHales.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            System.out.println("═════════════════════");
+            moveHalesEnemy();
+
+        }
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(4000);
+
+
+
 
     }
 
@@ -461,14 +530,21 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance < 3){
+            anim="wrestling";
             mrHales.wrestlingWipeout(mrChun);
+            pause(4000);
         }
         if (chance >= 3 && chance < 8){
+            anim = "summonforbes";
             mrHales.summonForbesBoys(mrChun);
+            pause(4000);
         }
         if (chance >= 8){
+            anim = "matrix";
             mrHales.matrixMultiplication(mrChun);
+            pause(4000);
         }
+        anim = "";
     }
 
 
@@ -541,6 +617,33 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         }
 
+        if (stageBackdrop == 2){
+
+            g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
+            g.drawImage(idleHussain, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height,null);
+
+            g.setColor(Color.green);
+            g.fillRect(660, 130, (int)(mrHussain.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
+
+        }
+
+        if (stageBackdrop == 5) {
+            g.drawImage(battle5Backdrop, -5, -5, 1050, 750, null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+            g.drawImage(idleHales, mrHales.xpos, mrHales.ypos, mrHales.width, mrHales.height, null);
+
+            g.setColor(Color.green);
+            g.fillRect(660, 130, (int)(mrHales.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
+
+        }
+
         if (anim.equalsIgnoreCase("dadhumor")){
             g.drawImage(dadhumour_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
@@ -577,9 +680,17 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawImage(beard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
         }
 
+        if (anim.equalsIgnoreCase("summonforbes")){
+            g.drawImage(forbesRush1, 500, 300, 200, 200, null);
+            g.drawImage(forbesRush2, 700, 300, 200, 200, null);
+        }
 
-        if (stageBackdrop == 2){
+        if (anim.equalsIgnoreCase("matrix")){
+            g.drawImage(matrix, 0, 0, 1000, 800, null);
+        }
 
+        if (anim.equalsIgnoreCase("wrestling")){
+            g.drawImage(wrestling, 200, 300, 700, 500, null);
         }
 
 
