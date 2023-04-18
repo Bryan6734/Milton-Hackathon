@@ -44,7 +44,7 @@ public class game implements Runnable, KeyListener, MouseListener {
     public faculty mrChun;
     public faculty msKilliam;
     public faculty mxBradford;
-    public faculty mrHussain;
+    public faculty mrHales;
 
 
     // AUDIO
@@ -68,8 +68,8 @@ public class game implements Runnable, KeyListener, MouseListener {
     // IMAGE BOOLEANS
 
     public int stageBackdrop = -1;
-    public int animation_playing = 0;
 
+    public String anim = "";
 
     // VARIABLE DECLARATION SECTION
     public game(){
@@ -77,9 +77,9 @@ public class game implements Runnable, KeyListener, MouseListener {
         setUpGraphics();
 
         mrChun = new faculty("Mr. Chun",500,true);
-        msKilliam = new faculty("Ms. Killiam",500,true);
+        msKilliam = new faculty("Mr. Killiam",500,true);
         mxBradford = new faculty("Mx. Bradford", 500, true);
-        mrHussain = new faculty("Mr. Hussain", 500, true);
+        mrHales = new faculty("Mr. Hales", 500, true);
 
         // TITLE SCREEN
 
@@ -133,8 +133,11 @@ public class game implements Runnable, KeyListener, MouseListener {
         Thread gameEx = new Thread(){
             public void run(){
                 titleScreen();
-//                killiamBattle();
+
                 bradfordBattle();
+                killiamBattle();
+
+                halesBattle();
 
             }
         };
@@ -184,7 +187,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         }
 
     }
-    // GARCHOMP BATTLE
+
     public void killiamBattle(){
         stageBackdrop = 1;
         battle_music.setVolume(0.1f);
@@ -208,62 +211,19 @@ public class game implements Runnable, KeyListener, MouseListener {
 
             if (msKilliam.health <= 0){
 
-
-
                 System.out.println("You have WON!");
                 break;
             }
             pause(1000);
-            moveKilliamEnemy();
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
         pause(4000);
     }
 
-    public void hussainBattle(){
-        stageBackdrop = 1;
-        battle_music.setVolume(0.1f);
-        battle_music.loop();
-
-        // position user here
-
-        System.out.println("╔══════════════════════════════════════════════╗");
-
-        System.out.println("*** CONSOLE: hussainBattle() Started");
-
-        for (int turn = 1; mrHussain.health>0; turn++){
-            if (mrHussain.health <= 0){
-                System.out.println("You have WON!");
-                break;
-            }
-            System.out.println("═════════════════════");
-            System.out.println("Turn "+turn);
-//            moveSystemUser();
-
-
-            if (mrHussain.health <= 0){
-
-                System.out.println("You have WON!");
-                break;
-            }
-            pause(1000);
-            moveHussainEnemy();
-        }
-        System.out.println("╚══════════════════════════════════════════════╝");
-        battle_music.stop();
-        pause(4000);
-    }
-
-
-
-
-
-
-    public void battle2(){
+    public void halesBattle(){
 
     }
-
 
     // MOVE SYSTEMS FOR USER AND ENEMY
     public void moveSystemUser(faculty enemy) {
@@ -281,29 +241,30 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         if (move.matches("(?i)1||2||3||4")) {
             if (move.equals("1")) {
-                animation_playing = 1;
+                anim="dadhumor";
                 mrChun.dadHumor(enemy);
             }
 
             if (move.equals("2")) {
-                animation_playing = 2;
+                anim="tsunami";
                 mrChun.bubbleTeaTsunami(enemy);
 
             }
 
             if (move.equals("3")) {
-                animation_playing = 3;
+                anim="boulderbash";
                 mrChun.boulderBash(enemy);
             }
 
             if (move.equals("4")) {
-                animation_playing = 4;
+                anim="highground";
                 mrChun.IHaveTheHighGround(enemy);
             }
 
             pause(1000);
 
-            animation_playing = 0;
+            anim = "";
+
         } else {
             moveSystemUser(enemy);
         }
@@ -325,44 +286,26 @@ public class game implements Runnable, KeyListener, MouseListener {
             mxBradford.selfAppreciation(mrChun);
         }
 
-        animation_playing = 0;
+
 
     }
 
-    public void moveKilliamEnemy(){
-        System.out.println("══════════");
+
+    public void moveHalesEnemy(){
+
         int chance = (int) (Math.random() * 10);
 
-        if (chance<3){
-            msKilliam.RedactleReveal(mrChun);
+        if (chance < 3){
+            mrHales.wrestlingWipeout(mrChun);
         }
-        if (chance>=3 && chance<8){
-            msKilliam.OutdoorProgramPummel(mrChun);
+        if (chance >= 3 && chance < 8){
+            mrHales.summonForbesBoys(mrChun);
         }
-        if (chance>=8){
-            msKilliam.RobbinsRush(mrChun);
+        if (chance >= 8){
+            mrHales.matrixMultiplication(mrChun);
         }
-
-        animation_playing = 0;
-
     }
 
-    public void moveHussainEnemy(){
-        System.out.println("══════════");
-        int chance = (int) (Math.random() * 10);
-
-        if (chance<3){
-            mrHussain.harvardHammer(mrChun);
-        }
-        if (chance>=3 && chance<8){
-            mrHussain.mustangMash(mrChun);
-        }
-        if (chance>=8){
-            msKilliam.beardBanish(mrChun);
-        }
-
-        animation_playing = 0;
-    }
 
     // BACK-END
     public void pause(int time ){
@@ -435,10 +378,6 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         if (stageBackdrop == 2){
 
-        }
-
-        if (animation_playing == 1) {
-            System.out.println("ANIM PLAYING");
         }
 
 

@@ -120,7 +120,7 @@ public class faculty {
     }
 
     public void RobbinsRush(faculty enemy){
-        System.out.println(name+" used ROBBINS RUSH on "+enemy.name+"!");
+        System.out.println(name+" used Robbins RUSH on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
@@ -167,8 +167,8 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
-    public void harvardHammer(faculty enemy){
-        System.out.println(name+" used HARVARD HAMMER on "+enemy.name+"!");
+    public void wrestlingWipeout(faculty enemy){
+        System.out.println(name+" used WRESTLING WIPEOUT on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
@@ -176,8 +176,9 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
-    public void mustangMash(faculty enemy){
-        System.out.println(name+" used MUSTANG MASH on "+enemy.name+"!");
+    public void summonForbesBoys(faculty enemy){
+
+        System.out.println(name+" summoned FORBES BOYS on " +enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
@@ -185,8 +186,8 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
-    public void beardBanish(faculty enemy){
-        System.out.println(name+" used BEARD BANISH on "+enemy.name+"!");
+    public void matrixMultiplication(faculty enemy){
+        System.out.println(name+" used MATRIX MULTIPLICATION on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
