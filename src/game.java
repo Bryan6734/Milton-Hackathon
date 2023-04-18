@@ -73,7 +73,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         setUpGraphics();
 
         mrChun = new faculty("Mr. Chun",500,true);
-        msKilliam = new faculty("Mr. Killiam",500,true);
+        msKilliam = new faculty("Ms. Killiam",500,true);
 
         // TITLE SCREEN
 
