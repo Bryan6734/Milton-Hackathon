@@ -42,6 +42,8 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image tsunami_anim;
     public Image boulder_anim;
     public Image highground_anim;
+    public Image geometricgyro_anim;
+    public Image mathMagic_anim;
 
 
     // POKEMON VARIABLES
@@ -120,6 +122,9 @@ public class game implements Runnable, KeyListener, MouseListener {
         tsunami_anim = Toolkit.getDefaultToolkit().getImage("tsunami.gif");
         boulder_anim = Toolkit.getDefaultToolkit().getImage("boulder.gif");
         highground_anim = Toolkit.getDefaultToolkit().getImage("highground.gif");
+        geometricgyro_anim = Toolkit.getDefaultToolkit().getImage("gyroscope.gif");
+        mathMagic_anim = Toolkit.getDefaultToolkit().getImage("mathMagic.gif");
+
 
         // SETTING POSITIONS
 
@@ -375,9 +380,11 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
+            anim="geometricgyro";
             msLockwood.geometricGyro(mrChun);
         }
         if (chance>=3 && chance<11){
+            anim="mathMagic";
             msLockwood.mathMagic(mrChun);
         }
 
@@ -538,6 +545,14 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         if (anim.equals("highground")) {
             g.drawImage(highground_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        }
+
+        if (anim.equals("geometricgyro")) {
+            g.drawImage(geometricgyro_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
+        }
+
+        if (anim.equals("mathMagic")) {
+            g.drawImage(mathMagic_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
         }
 
 
