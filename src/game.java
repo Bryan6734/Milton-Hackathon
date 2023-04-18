@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -42,6 +43,7 @@ public class game implements Runnable, KeyListener, MouseListener {
     // POKEMON VARIABLES
     public faculty mrChun;
     public faculty msKilliam;
+    public faculty mxBradford;
 
 
     // AUDIO
@@ -60,6 +62,7 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image stars;
     public Image battle1Backdrop;
     public Image healthbar;
+    public Image idleBradford;
 
     // IMAGE BOOLEANS
 
@@ -74,6 +77,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         mrChun = new faculty("Mr. Chun",500,true);
         msKilliam = new faculty("Mr. Killiam",500,true);
+        mxBradford = new faculty("Mx. Bradford", 500, true);
 
         // TITLE SCREEN
 
@@ -82,8 +86,11 @@ public class game implements Runnable, KeyListener, MouseListener {
         titlescreen = Toolkit.getDefaultToolkit().getImage("download.jpeg");
 
 
-        idleChun = Toolkit.getDefaultToolkit().getImage("chun-character.png");
+        idleChun = Toolkit.getDefaultToolkit().getImage("mrchun.png");
         idleHales = Toolkit.getDefaultToolkit().getImage("idleGarchomp.gif");
+
+        idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
+
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
@@ -97,12 +104,17 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         // SETTING POSITIONS
 
-        mrChun.xpos = 100; mrChun.ypos = 150;
+        mrChun.xpos = 200; mrChun.ypos = 450;
         mrChun.width = 300; mrChun.height = 255;
 
+        // put bradford right below health bar. it should be in a different place than mr chun
+        mxBradford.xpos = 600; mxBradford.ypos = 150;
+        mxBradford.width = 300; mxBradford.height = 300;
 
-        msKilliam.xpos = 550; msKilliam.ypos = 160;
-        msKilliam.width = 300; msKilliam.height = 300;
+//
+//
+//        msKilliam.xpos = 550; msKilliam.ypos = 160;
+//        msKilliam.width = 300; msKilliam.height = 300;
     }
 
     // GAME PROGRESSION (starts methods)
@@ -119,7 +131,8 @@ public class game implements Runnable, KeyListener, MouseListener {
         Thread gameEx = new Thread(){
             public void run(){
                 titleScreen();
-                battle1();
+//                killiamBattle();
+                bradfordBattle();
 
             }
         };
@@ -144,9 +157,33 @@ public class game implements Runnable, KeyListener, MouseListener {
 
     }
 
+    public void bradfordBattle(){
+        stageBackdrop = 1;
 
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: bradfordBattle() Started");
+
+        for (int turn = 1; mxBradford.health>0; turn++) {
+            if (mxBradford.health <= 0) {
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn " + turn);
+            moveSystemUser(mxBradford);
+
+            if (mxBradford.health <= 0) {
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            moveBradfordEnemy();
+        }
+
+    }
     // GARCHOMP BATTLE
-    public void battle1(){
+    public void killiamBattle(){
         stageBackdrop = 1;
         battle_music.setVolume(0.1f);
         battle_music.loop();
@@ -155,7 +192,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         System.out.println("╔══════════════════════════════════════════════╗");
 
-        System.out.println("*** CONSOLE: battle1() Started");
+        System.out.println("*** CONSOLE: killiamBattle() Started");
 
         for (int turn = 1; msKilliam.health>0; turn++){
             if (msKilliam.health <= 0){
@@ -164,7 +201,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             }
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
-            moveSystemUser();
+//            moveSystemUser();
 
 
             if (msKilliam.health <= 0){
@@ -183,17 +220,23 @@ public class game implements Runnable, KeyListener, MouseListener {
     }
 
 
+
+
     public void battle2(){
 
     }
 
 
     // MOVE SYSTEMS FOR USER AND ENEMY
-    public void moveSystemUser() {
+    public void moveSystemUser(faculty enemy) {
         System.out.println("Select 1 MOVE:");
 
-        System.out.println("[1] PRINT MOVE");
-        System.out.println("[2] PRINT MOVE");
+        // list all chun moves
+        System.out.println("══════════");
+        System.out.println("1. Dad Humor");
+        System.out.println("2. Bubble Tea Tsunami");
+        System.out.println("3. Boulder Bash");
+        System.out.println("4. I Have The High Ground");
 
         System.out.println("══════════");
         String move = input.next();
@@ -201,31 +244,51 @@ public class game implements Runnable, KeyListener, MouseListener {
         if (move.matches("(?i)1||2||3||4")) {
             if (move.equals("1")) {
                 animation_playing = 1;
-                mrChun.dadHumor(msKilliam);
+                mrChun.dadHumor(enemy);
             }
 
             if (move.equals("2")) {
                 animation_playing = 2;
-                mrChun.bubbleTeaTsunami(msKilliam);
+                mrChun.bubbleTeaTsunami(enemy);
 
             }
 
             if (move.equals("3")) {
                 animation_playing = 3;
-                mrChun.boulderBash(msKilliam);
+                mrChun.boulderBash(enemy);
             }
 
             if (move.equals("4")) {
                 animation_playing = 4;
-                mrChun.IHaveTheHighGround(msKilliam);
+                mrChun.IHaveTheHighGround(enemy);
             }
 
             pause(1000);
 
             animation_playing = 0;
         } else {
-            moveSystemUser();
+            moveSystemUser(enemy);
         }
+
+    }
+
+    public void moveBradfordEnemy(){
+        int chance = (int) (Math.random() * 10);
+
+        if (chance<3){
+            mxBradford.matchStickMadness(mrChun);
+            // Faculty move 1
+
+        }
+        if (chance>=3 && chance<8){
+            mxBradford.terminalTornado(mrChun);
+        }
+        if (chance>=8){
+            mxBradford.selfAppreciation(mrChun);
+        }
+
+        animation_playing = 0;
+
 
     }
     public void moveSystemEnemy(){
@@ -309,13 +372,15 @@ public class game implements Runnable, KeyListener, MouseListener {
         }
         if (stageBackdrop==1){
 
-
                 g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
                 g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
-                g.drawImage(idleHales, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.width,null);
+//                g.drawImage(idleHales, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.width,null);
+            // draw mx bradford
+
+                g.drawImage(idleBradford, mxBradford.xpos, mxBradford.ypos, mxBradford.width, mxBradford.height,null);
                 g.setColor(Color.green);
 
-                g.fillRect(660, 130, (int)(msKilliam.health/4.5), 10); // garchomp
+                g.fillRect(660, 130, (int)(mxBradford.health/4.5), 10); // garchomp
                 g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
                 // 110
                 g.drawImage(healthbar, 600,110,200,55,null); // garchomp

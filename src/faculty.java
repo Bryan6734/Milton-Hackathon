@@ -127,4 +127,43 @@ public class faculty {
         System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
+
+    public void selfAppreciation(faculty enemy){
+        System.out.println(name+" used SELF APPRECIATION on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        String[] appreciation = {
+                "You're doing great!",
+                "You're a rockstar!",
+                "You're a superstar!",
+                "You're a champion!",
+                "You're a legend!"
+        };
+
+        int random = (int)(Math.random()*appreciation.length);
+        System.out.println(appreciation[random]);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void matchStickMadness(faculty enemy){
+        System.out.println(name+" used MATCH STICK MADNESS on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void terminalTornado(faculty enemy){
+
+        System.out.println(name+" used TERMINAL TORNADO on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
 }
