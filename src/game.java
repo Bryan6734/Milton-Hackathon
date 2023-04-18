@@ -167,7 +167,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             moveSystemUser();
 
 
-            if (mrHales.health <= 0){
+            if (msKilliam.health <= 0){
 
 
 
@@ -201,23 +201,23 @@ public class game implements Runnable, KeyListener, MouseListener {
         if (move.matches("(?i)1||2||3||4")) {
             if (move.equals("1")) {
                 animation_playing = 1;
-                mrChun.dadHumor(mrHales);
+                mrChun.dadHumor(msKilliam);
             }
 
             if (move.equals("2")) {
                 animation_playing = 2;
-                mrChun.bubbleTeaTsunami(mrHales);
+                mrChun.bubbleTeaTsunami(msKilliam);
 
             }
 
             if (move.equals("3")) {
                 animation_playing = 3;
-                mrChun.boulderBash(mrHales);
+                mrChun.boulderBash(msKilliam);
             }
 
             if (move.equals("4")) {
                 animation_playing = 4;
-                mrChun.IHaveTheHighGround(mrHales);
+                mrChun.IHaveTheHighGround(msKilliam);
             }
 
             pause(1000);

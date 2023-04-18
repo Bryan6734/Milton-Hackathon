@@ -43,8 +43,9 @@ public class faculty {
     }
 
 
-    public void takeOffBelay(faculty enemy){
-        System.out.println(name+" used TAKE OFF BELAY on "+enemy.name+"!");
+    public void takeOffBelay(faculty enemy) {
+        System.out.println(name + " used TAKE OFF BELAY on " + enemy.name + "!");
+    }
 
     public void RedactleReveal(faculty enemy){
         System.out.println(name+" used REDACTLE REVEAL on "+enemy.name+"!");
