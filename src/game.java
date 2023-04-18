@@ -101,6 +101,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
         idleLockwood = Toolkit.getDefaultToolkit().getImage("mslockwood.png");
         idleKilliam = Toolkit.getDefaultToolkit().getImage("mrkilliam.png");
+        idleHussain = Toolkit.getDefaultToolkit().getImage("mrhussain.png");
 
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
@@ -121,6 +122,22 @@ public class game implements Runnable, KeyListener, MouseListener {
         // put bradford right below health bar. it should be in a different place than mr chun
         mxBradford.xpos = 600; mxBradford.ypos = 150;
         mxBradford.width = 300; mxBradford.height = 300;
+
+        mrHales.xpos = 600; mrHales.ypos = 150;
+        mrHales.width = 300; mrHales.height = 300;
+
+        mrHussain.xpos = 600; mrHussain.ypos = 150;
+        mrHussain.width = 300; mrHussain.height = 300;
+
+        msLockwood.xpos = 600; msLockwood.ypos = 150;
+        msLockwood.width = 300; msLockwood.height = 300;
+
+        msKilliam.xpos = 600; msKilliam.ypos = 150;
+        msKilliam.width = 300; msKilliam.height = 300;
+
+
+
+
 
 //
 //
@@ -143,10 +160,15 @@ public class game implements Runnable, KeyListener, MouseListener {
             public void run(){
                 titleScreen();
 
-                bradfordBattle();
-                lockwoodBattle();
-//                killiamBattle();
 
+                bradfordBattle();
+                mrChun.health = 500;
+                hussainBattle();
+                mrChun.health = 500;
+                lockwoodBattle();
+                mrChun.health = 500;
+                killiamBattle();
+                mrChun.health = 500;
                 halesBattle();
 
             }
@@ -200,13 +222,80 @@ public class game implements Runnable, KeyListener, MouseListener {
             moveBradfordEnemy();
         }
 
-        mxBradford.xpos = 2000;
-        mxBradford.ypos = 2000;
+
+    }
+
+    public void hussainBattle(){
+        stageBackdrop = 2;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
+
+        // position user here
+
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: hussainBattle() Started");
+
+        for (int turn = 1; mrHussain.health>0; turn++){
+            if (mrHussain.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+            moveSystemUser(mrHussain);
+
+            if (mrHussain.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            System.out.println("═════════════════════");
+            moveHussainEnemy();
+        }
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(1000);
+    }
+
+    public void lockwoodBattle(){
+
+        stageBackdrop = 3;
+        battle_music.setVolume(0.1f);
+        battle_music.loop();
+
+        System.out.println("╔══════════════════════════════════════════════╗");
+
+        System.out.println("*** CONSOLE: lockwoodBattle() Started");
+
+        for (int turn = 1; msLockwood.health>0; turn++){
+            if (msLockwood.health <= 0){
+                System.out.println("You have WON!");
+                break;
+            }
+            System.out.println("═════════════════════");
+            System.out.println("Turn "+turn);
+            moveSystemUser(msLockwood);
+
+            if (msLockwood.health <= 0){
+
+                System.out.println("You have WON!");
+                break;
+            }
+            pause(1000);
+            System.out.println("═════════════════════");
+            moveLockwoodEnemy();
+        }
+
+        System.out.println("╚══════════════════════════════════════════════╝");
+        battle_music.stop();
+        pause(4000);
 
     }
 
     public void killiamBattle(){
-        stageBackdrop = 1;
+        stageBackdrop = 4;
         battle_music.setVolume(0.1f);
         battle_music.loop();
 
@@ -242,76 +331,42 @@ public class game implements Runnable, KeyListener, MouseListener {
         pause(4000);
     }
 
-    public void hussainBattle(){
-        stageBackdrop = 1;
+    public void halesBattle(){
+
+        stageBackdrop = 5;
         battle_music.setVolume(0.1f);
         battle_music.loop();
 
         // position user here
-
         System.out.println("╔══════════════════════════════════════════════╗");
 
-        System.out.println("*** CONSOLE: hussainBattle() Started");
+        System.out.println("*** CONSOLE: halesBattle() Started");
 
-        for (int turn = 1; mrHussain.health>0; turn++){
-            if (mrHussain.health <= 0){
+        for (int turn = 1; mrHales.health>0; turn++){
+            if (mrHales.health <= 0){
                 System.out.println("You have WON!");
                 break;
             }
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
-            moveSystemUser(mrChun);
+            moveSystemUser(mrHales);
 
-            if (mrHussain.health <= 0){
+            if (mrHales.health <= 0){
 
                 System.out.println("You have WON!");
                 break;
             }
             pause(1000);
             System.out.println("═════════════════════");
-            moveHussainEnemy();
+            moveHalesEnemy();
+
         }
         System.out.println("╚══════════════════════════════════════════════╝");
         battle_music.stop();
         pause(4000);
-    }
 
-    public void lockwoodBattle(){
 
-        stageBackdrop = 1;
-        battle_music.setVolume(0.1f);
-        battle_music.loop();
 
-        System.out.println("╔══════════════════════════════════════════════╗");
-
-        System.out.println("*** CONSOLE: lockwoodBattle() Started");
-
-        for (int turn = 1; msLockwood.health>0; turn++){
-            if (msLockwood.health <= 0){
-                System.out.println("You have WON!");
-                break;
-            }
-            System.out.println("═════════════════════");
-            System.out.println("Turn "+turn);
-            moveSystemUser(msLockwood);
-
-            if (msLockwood.health <= 0){
-
-                System.out.println("You have WON!");
-                break;
-            }
-            pause(1000);
-            System.out.println("═════════════════════");
-            moveLockwoodEnemy();
-        }
-
-        System.out.println("╚══════════════════════════════════════════════╝");
-        battle_music.stop();
-        pause(4000);
-
-    }
-
-    public void halesBattle(){
 
     }
 
@@ -501,8 +556,6 @@ public class game implements Runnable, KeyListener, MouseListener {
 
                 g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
                 g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
-//                g.drawImage(idleHales, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.width,null);
-            // draw mx bradford
 
                 g.drawImage(idleBradford, mxBradford.xpos, mxBradford.ypos, mxBradford.width, mxBradford.height,null);
                 g.setColor(Color.green);
@@ -512,6 +565,20 @@ public class game implements Runnable, KeyListener, MouseListener {
                 // 110
                 g.drawImage(healthbar, 600,110,200,55,null); // garchomp
                 g.drawImage(healthbar, 245,310,200,55,null); // charizard
+
+        }
+
+        if (stageBackdrop == 2){
+
+            g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
+            g.drawImage(idleHussain, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height,null);
+
+            g.setColor(Color.green);
+            g.fillRect(660, 130, (int)(mrHussain.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
 
         }
 
