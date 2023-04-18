@@ -44,6 +44,10 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image highground_anim;
     public Image geometricgyro_anim;
     public Image mathMagic_anim;
+    public Image harvard_anim;
+    public Image mustang_anim;
+    public Image beard_anim;
+
 
 
     // POKEMON VARIABLES
@@ -124,6 +128,9 @@ public class game implements Runnable, KeyListener, MouseListener {
         highground_anim = Toolkit.getDefaultToolkit().getImage("highground.gif");
         geometricgyro_anim = Toolkit.getDefaultToolkit().getImage("gyroscope.gif");
         mathMagic_anim = Toolkit.getDefaultToolkit().getImage("mathMagic.gif");
+        harvard_anim = Toolkit.getDefaultToolkit().getImage("harvard.gif");
+        mustang_anim = Toolkit.getDefaultToolkit().getImage("mustang.gif");
+        beard_anim = Toolkit.getDefaultToolkit().getImage("beard.gif");
 
 
         // SETTING POSITIONS
@@ -416,12 +423,15 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance < 3) {
+            anim="harvard";
             mrHussain.harvardHammer(mrChun);
         }
         if (chance >= 3 && chance < 8) {
+            anim="beard";
             mrHussain.beardBanish(mrChun);
         }
         if (chance >= 8) {
+            anim="mustang";
             mrHussain.mustangMash(mrChun);
         }
 
@@ -543,16 +553,28 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawImage(boulder_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
-        if (anim.equals("highground")) {
+        if (anim.equalsIgnoreCase("highground")) {
             g.drawImage(highground_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
-        if (anim.equals("geometricgyro")) {
+        if (anim.equalsIgnoreCase("geometricgyro")) {
             g.drawImage(geometricgyro_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
         }
 
-        if (anim.equals("mathMagic")) {
+        if (anim.equalsIgnoreCase("mathMagic")) {
             g.drawImage(mathMagic_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("harvard")) {
+            g.drawImage(harvard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("mustang")) {
+            g.drawImage(mustang_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("beard")) {
+            g.drawImage(beard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
         }
 
 
