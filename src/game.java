@@ -108,7 +108,6 @@ public class game implements Runnable, KeyListener, MouseListener {
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
 
         // ANIMATIONS
-
         titlescreen_music = new SoundFile("01 Game Freak Logo.wav");
         intro_music = new SoundFile("02 Opening Movie.wav");
         battle_music = new SoundFile("11 Battle! (Trainer Battle).wav");
@@ -148,6 +147,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 //                killiamBattle();
 
                 halesBattle();
+
 
             }
         };
@@ -225,8 +225,6 @@ public class game implements Runnable, KeyListener, MouseListener {
             System.out.println("Turn "+turn);
             moveSystemUser(msKilliam);
 
-
-
             if (msKilliam.health <= 0){
 
                 System.out.println("You have WON!");
@@ -261,6 +259,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
             moveSystemUser(mrChun);
+
 
             if (mrHussain.health <= 0){
 
