@@ -42,14 +42,20 @@ public class faculty {
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
 
+
     public void takeOffBelay(faculty enemy){
         System.out.println(name+" used TAKE OFF BELAY on "+enemy.name+"!");
+
+    public void RedactleReveal(faculty enemy){
+        System.out.println(name+" used REDACTLE REVEAL on "+enemy.name+"!");
+
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
         System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
+
 
     public void dadHumor(faculty enemy){
         System.out.println(name+" used DAD HUMOR on "+enemy.name+"!");
@@ -102,5 +108,22 @@ public class faculty {
     }
 
 
+    public void OutdoorProgramPummel(faculty enemy){
+        System.out.println(name+" used OUTDOOR PROGRAM PUMMEL on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
 
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void RobbinsRush(faculty enemy){
+        System.out.println(name+" used Robbins RUSH on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
 }
