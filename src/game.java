@@ -41,7 +41,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
     // POKEMON VARIABLES
     public faculty mrChun;
-    public faculty mrHales;
+    public faculty msKilliam;
 
 
     // AUDIO
@@ -73,7 +73,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         setUpGraphics();
 
         mrChun = new faculty("Mr. Chun",500,true);
-        mrHales = new faculty("Mr. Hales",500,true);
+        msKilliam = new faculty("Mr. Killiam",500,true);
 
         // TITLE SCREEN
 
@@ -101,8 +101,8 @@ public class game implements Runnable, KeyListener, MouseListener {
         mrChun.width = 300; mrChun.height = 255;
 
 
-        mrHales.xpos = 550; mrHales.ypos = 160;
-        mrHales.width = 300; mrHales.height = 300;
+        msKilliam.xpos = 550; msKilliam.ypos = 160;
+        msKilliam.width = 300; msKilliam.height = 300;
     }
 
     // GAME PROGRESSION (starts methods)
@@ -157,15 +157,15 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         System.out.println("*** CONSOLE: battle1() Started");
 
-        for (int turn = 1; mrHales.health>0; turn++){
-            if (mrHales.health <= 0){
+        for (int turn = 1; msKilliam.health>0; turn++){
+            if (msKilliam.health <= 0){
                 System.out.println("You have WON!");
                 break;
             }
             System.out.println("═════════════════════");
             System.out.println("Turn "+turn);
             moveSystemUser();
-            if (mrHales.health <= 0){
+            if (msKilliam.health <= 0){
                 System.out.println("You have WON!");
                 break;
             }
@@ -215,17 +215,20 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
+            msKilliam.RedactleReveal(mrChun);
 
             // Faculty move 1
 
         }
         if (chance>=3 && chance<8){
+            msKilliam.OutdoorProgramPummel(mrChun);
 
             // Faculty move 2 method
             // Set animation playing
 
         }
         if (chance>=8){
+            msKilliam.RobbinsRush(mrChun);
 
             // FAculty move 3 method
             // Set animation playing
@@ -291,10 +294,10 @@ public class game implements Runnable, KeyListener, MouseListener {
 
                 g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
                 g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
-                g.drawImage(idleHales, mrHales.xpos, mrHales.ypos, mrHales.width, mrHales.width,null);
+                g.drawImage(idleHales, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.width,null);
                 g.setColor(Color.green);
 
-                g.fillRect(660, 130, (int)(mrHales.health/4.5), 10); // garchomp
+                g.fillRect(660, 130, (int)(msKilliam.health/4.5), 10); // garchomp
                 g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
                 // 110
                 g.drawImage(healthbar, 600,110,200,55,null); // garchomp
