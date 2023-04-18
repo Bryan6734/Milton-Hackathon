@@ -194,4 +194,51 @@ public class faculty {
         System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
         System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
     }
+
+    public void harvardHammer(faculty enemy){
+        System.out.println(name+" used HARVARD HAMMER on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void mustangMash(faculty enemy){
+        System.out.println(name+" used MUSTANG MASH on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void beardBanish(faculty enemy){
+        System.out.println(name+" used BEARD BANISH on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void geometricGyro(faculty enemy){
+
+        System.out.println(name+" used GEOMETRIC GYRO on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void mathMagic(faculty enemy){
+
+        System.out.println(name+" used MATH MAGIC on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
 }
