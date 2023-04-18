@@ -120,7 +120,7 @@ public class faculty {
     }
 
     public void RobbinsRush(faculty enemy){
-        System.out.println(name+" used Robbins RUSH on "+enemy.name+"!");
+        System.out.println(name+" used ROBBINS RUSH on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
@@ -160,6 +160,33 @@ public class faculty {
     public void terminalTornado(faculty enemy){
 
         System.out.println(name+" used TERMINAL TORNADO on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void harvardHammer(faculty enemy){
+        System.out.println(name+" used HARVARD HAMMER on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void mustangMash(faculty enemy){
+        System.out.println(name+" used MUSTANG MASH on "+enemy.name+"!");
+        damage = (int)(Math.random()*100+50);
+
+        enemy.health = enemy.health - (int)(damage);
+        System.out.println(name+" inflicted "+damage+" damage on "+enemy.name+"!");
+        System.out.println(enemy.name+"'s health is now "+enemy.health+"!");
+    }
+
+    public void beardBanish(faculty enemy){
+        System.out.println(name+" used BEARD BANISH on "+enemy.name+"!");
         damage = (int)(Math.random()*100+50);
 
         enemy.health = enemy.health - (int)(damage);
