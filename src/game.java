@@ -352,7 +352,7 @@ public class game implements Runnable, KeyListener, MouseListener {
                 mrChun.IHaveTheHighGround(enemy);
             }
 
-            pause(1000);
+            pause(4000);
 
             anim = "";
 
@@ -514,6 +514,14 @@ public class game implements Runnable, KeyListener, MouseListener {
                 g.drawImage(healthbar, 245,310,200,55,null); // charizard
 
         }
+
+        if (anim.equalsIgnoreCase("dadhumor")){
+
+            g.setFont(new Font("Arial", Font.BOLD, 30));
+            g.setColor(Color.WHITE);
+            g.drawString("Dad Humor", 400, 350);
+        }
+
 
         if (stageBackdrop == 2){
 
