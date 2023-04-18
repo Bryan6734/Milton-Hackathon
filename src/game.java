@@ -73,6 +73,9 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image idleLockwood;
     public Image idleHussain;
     public Image idleBradford;
+    public Image match;
+    public Image terminal;
+    public Image kind;
 
     public Image forbesRush1;
     public Image forbesRush2;
@@ -119,6 +122,9 @@ public class game implements Runnable, KeyListener, MouseListener {
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
         battle5Backdrop = Toolkit.getDefaultToolkit().getImage("icebackground.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
+        match = Toolkit.getDefaultToolkit().getImage("match.png");
+        terminal = Toolkit.getDefaultToolkit().getImage("tornado.gif");
+        kind = Toolkit.getDefaultToolkit().getImage("kind.png");
 
         matrix = Toolkit.getDefaultToolkit().getImage("matrix.gif");
         wrestling = Toolkit.getDefaultToolkit().getImage("wrestling.gif");
@@ -449,15 +455,22 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
+            anim = "matchsticks";
             mxBradford.matchStickMadness(mrChun);
+            pause(1000);
             // Faculty move 1
+
 
         }
         if (chance>=3 && chance<8){
+            anim = "terminalTornado";
             mxBradford.terminalTornado(mrChun);
+            pause(1000);
         }
         if (chance>=8){
+            anim = "selfAppreciation";
             mxBradford.selfAppreciation(mrChun);
+            pause(1000);
         }
 
 
@@ -623,6 +636,18 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawString("Dad Humor", 400, 350);
         }
 
+
+        if (anim.equalsIgnoreCase("matchsticks")) {
+            g.drawImage(match, 600, 150, 200, 200, null);
+        }
+
+        if (anim.equalsIgnoreCase("terminalTornado")) {
+            g.drawImage(terminal, 600, 150, 200, 200,null);
+        }
+
+        if (anim.equalsIgnoreCase("selfAppreciation")) {
+            g.drawImage(kind,600,150,200,200,null);
+
         if (anim.equalsIgnoreCase("summonforbes")){
             g.drawImage(forbesRush1, 500, 300, 200, 200, null);
             g.drawImage(forbesRush2, 700, 300, 200, 200, null);
@@ -630,6 +655,7 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         if (anim.equalsIgnoreCase("matrix")){
             g.drawImage(matrix, 0, 0, 1000, 800, null);
+
         }
 
         if (anim.equalsIgnoreCase("wrestling")){
