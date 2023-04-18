@@ -111,7 +111,7 @@ public class game implements Runnable, KeyListener, MouseListener {
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
         match = Toolkit.getDefaultToolkit().getImage("match.png");
-        terminal = Toolkit.getDefaultToolkit().getImage("tornado.png");
+        terminal = Toolkit.getDefaultToolkit().getImage("tornado.gif");
         kind = Toolkit.getDefaultToolkit().getImage("kind.png");
 
         // ANIMATIONS
