@@ -47,6 +47,9 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image harvard_anim;
     public Image mustang_anim;
     public Image beard_anim;
+    public Image redactle_anim;
+    public Image odp_anim;
+    public Image robbins_anim;
 
 
 
@@ -129,8 +132,12 @@ public class game implements Runnable, KeyListener, MouseListener {
         geometricgyro_anim = Toolkit.getDefaultToolkit().getImage("gyroscope.gif");
         mathMagic_anim = Toolkit.getDefaultToolkit().getImage("mathMagic.gif");
         harvard_anim = Toolkit.getDefaultToolkit().getImage("harvard.gif");
-        mustang_anim = Toolkit.getDefaultToolkit().getImage("mustang.gif");
+        mustang_anim = Toolkit.getDefaultToolkit().getImage("mustang.jpeg");
         beard_anim = Toolkit.getDefaultToolkit().getImage("beard.gif");
+        redactle_anim = Toolkit.getDefaultToolkit().getImage("redactle.gif");
+        odp_anim = Toolkit.getDefaultToolkit().getImage("odp.gif");
+        robbins_anim = Toolkit.getDefaultToolkit().getImage("robbins.jpeg");
+
 
 
         // SETTING POSITIONS
@@ -442,14 +449,16 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance < 3){
+            anim="robbins";
             msKilliam.RobbinsRush(mrChun);
         }
-
         if (chance >= 3 && chance < 8){
+            anim="redactle";
             msKilliam.RedactleReveal(mrChun);
         }
 
         if (chance >= 8){
+            anim="odp";
             msKilliam.OutdoorProgramPummel(mrChun);
         }
 
@@ -575,6 +584,18 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         if (anim.equalsIgnoreCase("beard")) {
             g.drawImage(beard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("redactle")) {
+            g.drawImage(redactle_anim, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("robbins")) {
+            g.drawImage(robbins_anim, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("odp")) {
+            g.drawImage(odp_anim, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.height, null);
         }
 
 
