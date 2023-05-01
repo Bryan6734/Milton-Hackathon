@@ -38,6 +38,16 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image rockfall_anim;
     public Image earthquake_anim;
     public Image tectonicbarrier_anim;
+    public Image dadhumour_anim;
+    public Image tsunami_anim;
+    public Image boulder_anim;
+    public Image highground_anim;
+    public Image geometricgyro_anim;
+    public Image mathMagic_anim;
+    public Image harvard_anim;
+    public Image mustang_anim;
+    public Image beard_anim;
+
 
 
     // POKEMON VARIABLES
@@ -58,10 +68,9 @@ public class game implements Runnable, KeyListener, MouseListener {
 
 
 
-
-
     // IMAGES AND GIFS
     public Image titlescreen;
+
     public Image stars;
     public Image battle1Backdrop;
     public Image battle5Backdrop;
@@ -72,13 +81,6 @@ public class game implements Runnable, KeyListener, MouseListener {
     public Image idleLockwood;
     public Image idleHussain;
     public Image idleBradford;
-    public Image match;
-    public Image terminal;
-    public Image kind;
-
-    public Image field;
-    public Image livingRoom;
-    public Image csClassroom;
 
     public Image forbesRush1;
     public Image forbesRush2;
@@ -109,6 +111,8 @@ public class game implements Runnable, KeyListener, MouseListener {
         // POKEMON & OBJECT IMAGES & GIFS + SOUND
 
         titlescreen = Toolkit.getDefaultToolkit().getImage("download.jpeg");
+
+
         idleChun = Toolkit.getDefaultToolkit().getImage("mrchun.png");
         idleHales = Toolkit.getDefaultToolkit().getImage("mrhales.png");
         idleBradford = Toolkit.getDefaultToolkit().getImage("mxbradford.png");
@@ -121,14 +125,8 @@ public class game implements Runnable, KeyListener, MouseListener {
 
         stars = Toolkit.getDefaultToolkit().getImage("selectPokemon.png");
         battle1Backdrop = Toolkit.getDefaultToolkit().getImage("dayforest.jpeg");
-        field = Toolkit.getDefaultToolkit().getImage("field.png");
-        livingRoom = Toolkit.getDefaultToolkit().getImage("living-room.png");
-        csClassroom = Toolkit.getDefaultToolkit().getImage("csclassroom.png");
         battle5Backdrop = Toolkit.getDefaultToolkit().getImage("icebackground.jpeg");
         healthbar = Toolkit.getDefaultToolkit().getImage("healthbar.png");
-        match = Toolkit.getDefaultToolkit().getImage("match.png");
-        terminal = Toolkit.getDefaultToolkit().getImage("tornado.gif");
-        kind = Toolkit.getDefaultToolkit().getImage("kind.png");
 
         matrix = Toolkit.getDefaultToolkit().getImage("matrix.gif");
         wrestling = Toolkit.getDefaultToolkit().getImage("wrestling.gif");
@@ -137,6 +135,17 @@ public class game implements Runnable, KeyListener, MouseListener {
         titlescreen_music = new SoundFile("01 Game Freak Logo.wav");
         intro_music = new SoundFile("02 Opening Movie.wav");
         battle_music = new SoundFile("11 Battle! (Trainer Battle).wav");
+
+        dadhumour_anim = Toolkit.getDefaultToolkit().getImage("dadhumour.gif");
+        tsunami_anim = Toolkit.getDefaultToolkit().getImage("tsunami.gif");
+        boulder_anim = Toolkit.getDefaultToolkit().getImage("boulder.gif");
+        highground_anim = Toolkit.getDefaultToolkit().getImage("highground.gif");
+        geometricgyro_anim = Toolkit.getDefaultToolkit().getImage("gyroscope.gif");
+        mathMagic_anim = Toolkit.getDefaultToolkit().getImage("mathMagic.gif");
+        harvard_anim = Toolkit.getDefaultToolkit().getImage("harvard.gif");
+        mustang_anim = Toolkit.getDefaultToolkit().getImage("mustang.gif");
+        beard_anim = Toolkit.getDefaultToolkit().getImage("beard.gif");
+
 
         // SETTING POSITIONS
 
@@ -194,6 +203,7 @@ public class game implements Runnable, KeyListener, MouseListener {
                 killiamBattle();
                 mrChun.health = 500;
                 halesBattle();
+
 
             }
         };
@@ -413,6 +423,7 @@ public class game implements Runnable, KeyListener, MouseListener {
             if (move.equals("1")) {
                 anim="dadhumor";
                 mrChun.dadHumor(enemy);
+                pause(2800);
             }
 
             if (move.equals("2")) {
@@ -445,9 +456,11 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
+            anim="geometricgyro";
             msLockwood.geometricGyro(mrChun);
         }
         if (chance>=3 && chance<11){
+            anim="mathMagic";
             msLockwood.mathMagic(mrChun);
         }
 
@@ -459,22 +472,15 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance<3){
-            anim = "matchsticks";
             mxBradford.matchStickMadness(mrChun);
-            pause(1000);
             // Faculty move 1
-
 
         }
         if (chance>=3 && chance<8){
-            anim = "terminalTornado";
             mxBradford.terminalTornado(mrChun);
-            pause(1000);
         }
         if (chance>=8){
-            anim = "selfAppreciation";
             mxBradford.selfAppreciation(mrChun);
-            pause(1000);
         }
 
 
@@ -486,12 +492,15 @@ public class game implements Runnable, KeyListener, MouseListener {
         int chance = (int) (Math.random() * 10);
 
         if (chance < 3) {
+            anim="harvard";
             mrHussain.harvardHammer(mrChun);
         }
         if (chance >= 3 && chance < 8) {
+            anim="beard";
             mrHussain.beardBanish(mrChun);
         }
         if (chance >= 8) {
+            anim="mustang";
             mrHussain.mustangMash(mrChun);
         }
 
@@ -577,76 +586,49 @@ public class game implements Runnable, KeyListener, MouseListener {
         System.out.println("DONE graphic setup");
 
     }
-
-
     private void render() {
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.clearRect(0, 0, WIDTH, HEIGHT);
 
-        if (stageBackdrop == -1) {
-
-            g.drawString("Hello", 100, 100);
+        if (stageBackdrop==-1){
             g.drawImage(titlescreen, 0, 0, 1000, 700, null);
         }
 
-        if (stageBackdrop == 0) {
-            g.drawImage(stars, -5, -5, 1050, 750, null);
-            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        if (stageBackdrop==0){
+            g.drawImage(stars,-5,-5,1050,750,null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
 
         }
-        if (stageBackdrop == 1) {
+        if (stageBackdrop==1){
 
-            g.drawImage(battle1Backdrop, -5, -5, 1050, 750, null);
-            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+                g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
+                g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
+//                g.drawImage(idleHales, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.width,null);
+            // draw mx bradford
 
-            g.drawImage(idleBradford, mxBradford.xpos, mxBradford.ypos, mxBradford.width, mxBradford.height, null);
-            g.setColor(Color.green);
+                g.drawImage(idleBradford, mxBradford.xpos, mxBradford.ypos, mxBradford.width, mxBradford.height,null);
+                g.setColor(Color.green);
 
-            g.fillRect(660, 130, (int) (mxBradford.health / 4.5), 10); // garchomp
-            g.fillRect(305, 330, (int) (mrChun.health / 4.5), 10); // charizarwd
-            // 110
-            g.drawImage(healthbar, 600, 110, 200, 55, null); // garchomp
-            g.drawImage(healthbar, 245, 310, 200, 55, null); // charizard
-
-        }
-
-        if (stageBackdrop == 2) {
-
-            g.drawImage(battle1Backdrop, -5, -5, 1050, 750, null);
-            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
-            g.drawImage(idleHussain, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
-
-            g.setColor(Color.green);
-            g.fillRect(660, 130, (int) (mrHussain.health / 4.5), 10); // garchomp
-            g.fillRect(305, 330, (int) (mrChun.health / 4.5), 10); // charizarwd
-            g.drawImage(healthbar, 600, 110, 200, 55, null); // garchomp
-            g.drawImage(healthbar, 245, 310, 200, 55, null); // charizard
+                g.fillRect(660, 130, (int)(mxBradford.health/4.5), 10); // garchomp
+                g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+                // 110
+                g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+                g.drawImage(healthbar, 245,310,200,55,null); // charizard
 
         }
 
-        if (stageBackdrop == 3){
-            g.drawImage(livingRoom, -5, -5, 1050, 750, null);
-            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
+        if (stageBackdrop == 2){
 
-            g.drawImage(idleLockwood, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
-            g.setColor(Color.green);
-            g.fillRect(660, 130, (int) (msLockwood.health / 4.5), 10); // garchomp
-            g.fillRect(305, 330, (int) (mrChun.health / 4.5), 10); // charizarwd
-            g.drawImage(healthbar, 600, 110, 200, 55, null); // garchomp
-            g.drawImage(healthbar, 245, 310, 200, 55, null); // charizard
-
-        }
-
-        if (stageBackdrop == 4){
-            g.drawImage(battle1Backdrop, -5, -5, 1050, 750, null);
-            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
-            g.drawImage(idleKilliam, msKilliam.xpos, msKilliam.ypos, msKilliam.width, msKilliam.height, null);
+            g.drawImage(battle1Backdrop,-5,-5,1050,750,null);
+            g.drawImage(idleChun, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height,null);
+            g.drawImage(idleHussain, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height,null);
 
             g.setColor(Color.green);
-            g.fillRect(660, 130, (int) (msKilliam.health / 4.5), 10); // garchomp
-            g.fillRect(305, 330, (int) (mrChun.health / 4.5), 10); // charizarwd
-            g.drawImage(healthbar, 600, 110, 200, 55, null); // garchomp
-            g.drawImage(healthbar, 245, 310, 200, 55, null); // charizard
+            g.fillRect(660, 130, (int)(mrHussain.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
+
         }
 
         if (stageBackdrop == 5) {
@@ -655,48 +637,62 @@ public class game implements Runnable, KeyListener, MouseListener {
             g.drawImage(idleHales, mrHales.xpos, mrHales.ypos, mrHales.width, mrHales.height, null);
 
             g.setColor(Color.green);
-            g.fillRect(660, 130, (int) (mrHales.health / 4.5), 10); // garchomp
-            g.fillRect(305, 330, (int) (mrChun.health / 4.5), 10); // charizarwd
-            g.drawImage(healthbar, 600, 110, 200, 55, null); // garchomp
-            g.drawImage(healthbar, 245, 310, 200, 55, null); // charizard
+            g.fillRect(660, 130, (int)(mrHales.health/4.5), 10); // garchomp
+            g.fillRect(305, 330, (int)(mrChun.health/4.5), 10); // charizarwd
+            g.drawImage(healthbar, 600,110,200,55,null); // garchomp
+            g.drawImage(healthbar, 245,310,200,55,null); // charizard
 
         }
 
-        if (anim.equalsIgnoreCase("dadhumor")) {
-
-            g.setFont(new Font("Arial", Font.BOLD, 30));
-            g.setColor(Color.WHITE);
-            g.drawString("Dad Humor", 400, 350);
+        if (anim.equalsIgnoreCase("dadhumor")){
+            g.drawImage(dadhumour_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
-        if (anim.equalsIgnoreCase("matchsticks")) {
-            g.drawImage(match, 600, 150, 200, 200, null);
+        if (anim.equalsIgnoreCase("tsunami")) {
+            g.drawImage(tsunami_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
-        if (anim.equalsIgnoreCase("terminalTornado")) {
-            g.drawImage(terminal, 600, 150, 200, 200, null);
+        if (anim.equalsIgnoreCase("boulderbash")) {
+            g.drawImage(boulder_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
 
-        if (anim.equalsIgnoreCase("selfAppreciation")) {
-            g.drawImage(kind, 600, 150, 200, 200, null);
-
-            if (anim.equalsIgnoreCase("summonforbes")) {
-                g.drawImage(forbesRush1, 500, 300, 200, 200, null);
-                g.drawImage(forbesRush2, 700, 300, 200, 200, null);
-            }
-
-            if (anim.equalsIgnoreCase("matrix")) {
-                g.drawImage(matrix, 0, 0, 1000, 800, null);
-
-            }
-
-            if (anim.equalsIgnoreCase("wrestling")) {
-                g.drawImage(wrestling, 200, 300, 700, 500, null);
-            }
-
-            g.dispose();
-            bufferStrategy.show();
+        if (anim.equalsIgnoreCase("highground")) {
+            g.drawImage(highground_anim, mrChun.xpos, mrChun.ypos, mrChun.width, mrChun.height, null);
         }
+
+        if (anim.equalsIgnoreCase("geometricgyro")) {
+            g.drawImage(geometricgyro_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("mathMagic")) {
+            g.drawImage(mathMagic_anim, msLockwood.xpos, msLockwood.ypos, msLockwood.width, msLockwood.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("harvard")) {
+            g.drawImage(harvard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("mustang")) {
+            g.drawImage(mustang_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("beard")) {
+            g.drawImage(beard_anim, mrHussain.xpos, mrHussain.ypos, mrHussain.width, mrHussain.height, null);
+        }
+
+        if (anim.equalsIgnoreCase("summonforbes")){
+            g.drawImage(forbesRush1, 500, 300, 200, 200, null);
+            g.drawImage(forbesRush2, 700, 300, 200, 200, null);
+        }
+
+        if (anim.equalsIgnoreCase("matrix")){
+            g.drawImage(matrix, 0, 0, 1000, 800, null);
+        }
+
+        if (anim.equalsIgnoreCase("wrestling")){
+            g.drawImage(wrestling, 200, 300, 700, 500, null);
+        }
+
 
         g.dispose();
         bufferStrategy.show();
